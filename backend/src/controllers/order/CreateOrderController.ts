@@ -5,10 +5,8 @@ class CreateOrderController {
     async handle(req: Request, res: Response) {
         const { table, name } = req.body;
         const createOrderService = new CreateOrderService();
-        const order = createOrderService.execute({ name, table });
-
-        res.json(order)
-
+        const order = await createOrderService.execute({ name, table });
+        return res.json(order)
     }
 }
 export { CreateOrderController }
