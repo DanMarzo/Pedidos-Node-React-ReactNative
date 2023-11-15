@@ -5,9 +5,13 @@ import { DetailUserController } from "./controllers/user/DetailsUserController"
 import { isAuthenticated } from "./middlewares/isAuthenticated"
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController"
 import { ListCategoryController } from "./controllers/category/ListCategoryController"
+import { CreateProductController } from "./controllers/product/CreateProductController"
+import multer from "multer"
+import uploadConfig from "./config/multer"
 
 const router = Router()
 
+const upload = multer(uploadConfig.upload("./tmp"))
 // Rotas user
 router.post("/users", new CreateUserController().handle)
 
@@ -20,5 +24,8 @@ router.get("/me", isAuthenticated, new DetailUserController().handle)
 router.post("/category", isAuthenticated, new CreateCategoryController().handle)
 
 router.get("/category", isAuthenticated, new ListCategoryController().handle)
+
+//Product
+router.post("/product", isAuthenticated, upload.single("file"), new CreateProductController().handle)
 
 export{router}
