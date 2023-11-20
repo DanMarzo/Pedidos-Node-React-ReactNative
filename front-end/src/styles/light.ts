@@ -18,5 +18,7 @@ export default {
     sizes: {
         appbar: "5vh",
         bodtWithAppbar: "95vh",
+        bodyNotAppbar: "100vh",
+
     }
 }

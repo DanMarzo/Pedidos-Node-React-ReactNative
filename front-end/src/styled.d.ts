@@ -17,7 +17,8 @@ declare module "styled-components"{
         }
         sizes:{
             appbar: string;
-            bodtWithAppbar: string;
+            bodtWithAppbar: string;   
+            bodyNotAppbar: string;
         }
     }
 }

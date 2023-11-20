@@ -1,6 +1,6 @@
-import { BtnLogin } from "@/app/page.styled";
 import { LoadingOutlined } from "@ant-design/icons";
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import { BtnLogin } from "./BtnStyled";
 
 interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading: boolean;
@@ -9,7 +9,7 @@ interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const BtnWithLoading: React.FC<BtnProps> = ({ children, loading, ...rest }) => {
   return (
-    <BtnLogin {...rest}>
+    <BtnLogin {...rest} disabled={loading}>
       <>{loading ? <LoadingOutlined /> : <>{children}</>}</>
     </BtnLogin>
   );
