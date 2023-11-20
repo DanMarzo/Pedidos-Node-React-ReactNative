@@ -14,6 +14,7 @@ import Logo from "@/../public/logo.svg";
 import { InputPwd, InputStyled } from "@/components/Inputs/InputComp";
 import BtnWithLoading from "@/components/Btn/Btn";
 import { Ancora } from "@/components/Ancoras/Ancoras";
+import Link from "next/link";
 const { Item } = Form;
 export default function Home() {
   return (
@@ -43,7 +44,7 @@ export default function Home() {
                 Enviar
               </BtnWithLoading>
             </Form>
-            <Ancora>Não possui uma conta? Cadastre-se</Ancora>
+            <Ancora href={"/signup"}>Não possui uma conta? Cadastre-se</Ancora>
           </MainAuth>
         </ContentStyled>
       </Layout>
