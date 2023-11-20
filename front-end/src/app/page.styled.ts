@@ -21,6 +21,7 @@ const ContentStyled = styled(Content)`
 `
 const TitleStyled = styled.h1`
     color: ${props => props.theme.colors.primary};
+    text-align: center;
 `
 
 const MainAuth = styled.main`
@@ -29,7 +30,6 @@ const MainAuth = styled.main`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-
 `
 
 export { HeaderStyled, ContentStyled, TitleStyled, MainAuth }

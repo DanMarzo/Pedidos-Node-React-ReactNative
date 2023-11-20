@@ -1,6 +1,6 @@
 "use client";
 import GlobalStyles from "@/styles/GlobalStyles";
-import { Button, Form, Input, Layout } from "antd";
+import { Form, Layout } from "antd";
 import { ThemeProvider } from "styled-components";
 import light from "@/styles/light";
 import Image from "next/image";
@@ -8,8 +8,7 @@ import Logo from "@/../public/logo.svg";
 import { InputPwd, InputStyled } from "@/components/Inputs/InputComp";
 import BtnWithLoading from "@/components/Btn/Btn";
 import { Ancora } from "@/components/Ancoras/Ancoras";
-import Link from "next/link";
-import { ContentStyled, MainAuth } from "../page.styled";
+import { ContentStyled, MainAuth, TitleStyled } from "../page.styled";
 const { Item } = Form;
 export default function Home() {
   return (
@@ -21,7 +20,10 @@ export default function Home() {
         </HeaderStyled> */}
         <ContentStyled>
           <MainAuth>
-            <Image src={Logo} alt="Imagem Sujeito Pizza" />
+            <TitleStyled>
+              <Image src={Logo} alt="Imagem Sujeito Pizza" />
+            </TitleStyled>
+            <TitleStyled>Crie sua conta</TitleStyled>
             <Form onFinish={(e) => console.log(e)} layout="horizontal">
               <Item
                 name={"email"}

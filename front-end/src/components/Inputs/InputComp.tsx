@@ -12,6 +12,7 @@ const InputPwd: React.FC<PasswordProps> = ({ ...rest }) => {
     backgroundColor: theme?.colors.dark900,
     color: theme?.colors.primary,
     border: `1px solid ${theme?.colors.dark900}`,
+    width: "100%",
   };
   return (
     <Password
