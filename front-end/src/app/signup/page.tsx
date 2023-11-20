@@ -41,7 +41,7 @@ export default function Home() {
                 Enviar
               </BtnWithLoading>
             </Form>
-            <Ancora href={"/signup"}>Não possui uma conta? Cadastre-se</Ancora>
+            <Ancora href={"/"}>Já possui uma conta? Login</Ancora>
           </MainAuth>
         </ContentStyled>
       </Layout>
