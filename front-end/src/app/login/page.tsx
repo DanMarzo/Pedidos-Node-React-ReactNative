@@ -1,10 +1,11 @@
+"use client";
 import { Ancora } from "@/components/Ancoras/Ancoras";
 import BtnWithLoading from "@/components/Btn/Btn";
 import { InputStyled, InputPwd } from "@/components/Inputs/InputComp";
 import GlobalStyles from "@/styles/GlobalStyles";
 import { Layout, Form } from "antd";
 import React, { useContext } from "react";
-import { ContentStyled, MainAuth, TitleStyled } from "./page.styled";
+import { ContentStyled, MainAuth, TitleStyled } from "../page.styled";
 const { Item } = Form;
 import Logo from "@/../public/logo.svg";
 import { AuthContext, SignInProps } from "@/contexts/AuthContext";
@@ -43,7 +44,7 @@ const Login = () => {
               Enviar
             </BtnWithLoading>
           </Form>
-          <Ancora href={"/signup"}>Não possui uma conta? Cadastre-se</Ancora>
+          <Ancora href={"/signIn"}>Não possui uma conta? Cadastre-se</Ancora>
         </MainAuth>
       </ContentStyled>
     </Layout>
