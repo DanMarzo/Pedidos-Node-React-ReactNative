@@ -1,4 +1,5 @@
 "use client";
+import { useMutation } from "@tanstack/react-query";
 import { createContext, ReactNode, useState } from "react";
 
 type AuthContextData = {
@@ -26,6 +27,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>();
 
   const isAuthenticated = !!user;
+  // const loginMutation = useMutation({mutationFn:() => })
 
   async function signIn() {
     alert("CLICOU");

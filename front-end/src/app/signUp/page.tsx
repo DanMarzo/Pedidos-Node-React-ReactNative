@@ -1,5 +1,4 @@
 "use client";
-import GlobalStyles from "@/styles/GlobalStyles";
 import { Form, Layout } from "antd";
 import { ThemeProvider } from "styled-components";
 import light from "@/styles/light";
@@ -10,14 +9,11 @@ import BtnWithLoading from "@/components/Btn/Btn";
 import { Ancora } from "@/components/Ancoras/Ancoras";
 import { ContentStyled, MainAuth, TitleStyled } from "../page.styled";
 const { Item } = Form;
+
 export default function Home() {
   return (
     <ThemeProvider theme={light}>
       <Layout>
-        <GlobalStyles />
-        {/* <HeaderStyled>
-          <TitleStyled>Sujeito Pizza</TitleStyled>
-        </HeaderStyled> */}
         <ContentStyled>
           <MainAuth>
             <TitleStyled>

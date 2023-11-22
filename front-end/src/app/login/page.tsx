@@ -11,17 +11,15 @@ import Logo from "@/../public/logo.svg";
 import { AuthContext, SignInProps } from "@/contexts/AuthContext";
 
 import Image from "next/image";
+import { useMutation } from "@tanstack/react-query";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-
   async function handleSubmit(e: SignInProps) {
-    console.log(e);
     signIn(e);
   }
   return (
     <Layout>
-      <GlobalStyles />
       <ContentStyled>
         <MainAuth>
           <TitleStyled>
@@ -44,7 +42,7 @@ const Login = () => {
               Enviar
             </BtnWithLoading>
           </Form>
-          <Ancora href={"/signIn"}>Não possui uma conta? Cadastre-se</Ancora>
+          <Ancora href={"/signUp"}>Não possui uma conta? Cadastre-se</Ancora>
         </MainAuth>
       </ContentStyled>
     </Layout>
