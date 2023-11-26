@@ -2,21 +2,25 @@
 import { Ancora } from "@/components/Ancoras/Ancoras";
 import BtnWithLoading from "@/components/Btn/Btn";
 import { InputStyled, InputPwd } from "@/components/Inputs/InputComp";
-import GlobalStyles from "@/styles/GlobalStyles";
+// import GlobalStyles from "@/styles/GlobalStyles";
 import { Layout, Form } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ContentStyled, MainAuth, TitleStyled } from "../page.styled";
 const { Item } = Form;
 import Logo from "@/../public/logo.svg";
 import { AuthContext, SignInProps } from "@/contexts/AuthContext";
 
 import Image from "next/image";
-import { useMutation } from "@tanstack/react-query";
 
 const Login = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const { signIn } = useContext(AuthContext);
+
   async function handleSubmit(e: SignInProps) {
-    signIn(e);
+    setLoading(!loading);
+    await signIn(e);
+    setLoading(!loading);
   }
   return (
     <Layout>
@@ -38,7 +42,7 @@ const Login = () => {
             >
               <InputPwd />
             </Item>
-            <BtnWithLoading loading={false} type="submit">
+            <BtnWithLoading loading={loading} type="submit">
               Enviar
             </BtnWithLoading>
           </Form>
