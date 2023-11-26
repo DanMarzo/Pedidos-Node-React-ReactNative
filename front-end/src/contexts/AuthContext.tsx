@@ -1,9 +1,11 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
-import { destroyCookie } from "nookies";
+import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { createContext, ReactNode, useState } from "react";
 import Router from "next/router";
 import { apiClient } from "@/infrastructure/apiClient";
+import { useRouter } from "next/navigation";
+
 type AuthContextData = {
   user: UserProps;
   isAuthenticated: boolean;
@@ -22,6 +24,12 @@ export type SignInProps = {
   password: string;
 };
 
+type UserData = {
+  id: string;
+  name: string;
+  email: string;
+  token: string;
+};
 export function signOut() {
   try {
     destroyCookie(undefined, "@nextauth.token");
@@ -37,7 +45,7 @@ type AuthProviderProps = { children: ReactNode };
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>();
-
+  const router = useRouter();
   const isAuthenticated = !!user;
   const loginMutation = useMutation({
     mutationFn: (body: SignInProps) => apiClient.post("/session", body),
@@ -45,7 +53,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.log(error);
     },
     onSuccess(data) {
-      console.log(data);
+      const { token, email, id, name } = data.data as UserData;
+      setCookie(undefined, "@nextauth.token", token, {
+        path: "/",
+      });
+      setUser({ email, id, name });
+      apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+      router.push("/dashboard");
     },
   });
 
