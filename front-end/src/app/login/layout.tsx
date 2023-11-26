@@ -2,11 +2,7 @@
 import { AuthProvider } from "@/contexts/AuthContext";
 import GlobalStyles from "@/styles/GlobalStyles";
 import light from "@/styles/light";
-import {
-  QueryClient,
-  QueryClientContext,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "styled-components";
 const queryClient = new QueryClient({
   defaultOptions: {
