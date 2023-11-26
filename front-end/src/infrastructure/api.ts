@@ -1,9 +1,10 @@
-import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import axios, { AxiosError } from "axios";
 import { AuthTokenError } from "./errors/AuthTokenError";
+import { signOut } from "@/contexts/AuthContext";
+import { parseCookies } from 'nookies'
 
-export function setApiClient(ctx = undefined) {
-    let cookies = parseCookie(ctx);
+export function setupApiClient(ctx = undefined) {
+    let cookies = parseCookies(ctx);
     const api = axios.create({
         baseURL: "http://localhost:3333",
         headers: {
@@ -16,7 +17,7 @@ export function setApiClient(ctx = undefined) {
         (error: AxiosError) => {
             if (error.response.status == 401) {
                 if (typeof window !== undefined) {
-
+                    signOut();
                 } else {
                     return Promise.reject(new AuthTokenError())
                 }
@@ -24,4 +25,5 @@ export function setApiClient(ctx = undefined) {
             return Promise.reject(error)
         }
     )
+      return api;
 }
