@@ -64,7 +64,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   });
 
   async function signIn({ email, password }: SignInProps) {
-    loginMutation.mutate({ email, password });
+    await loginMutation.mutateAsync({ email, password });
   }
 
   return (

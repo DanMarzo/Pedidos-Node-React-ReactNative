@@ -8,9 +8,20 @@ import { InputPwd, InputStyled } from "@/components/Inputs/InputComp";
 import BtnWithLoading from "@/components/Btn/Btn";
 import { Ancora } from "@/components/Ancoras/Ancoras";
 import { ContentStyled, MainAuth, TitleStyled } from "../page.styled";
+import { useMutation } from "@tanstack/react-query";
+import { apiClient } from "@/infrastructure/apiClient";
+import { useRouter } from "next/navigation";
+import { Label } from "@/components/Typograph";
 const { Item } = Form;
 
 export default function Home() {
+  const router = useRouter();
+  const register = useMutation({
+    mutationFn: (body) => apiClient.post("/users", body),
+    onSuccess() {
+      router.push("/login");
+    },
+  });
   return (
     <ThemeProvider theme={light}>
       <Layout>
@@ -20,20 +31,29 @@ export default function Home() {
               <Image src={Logo} alt="Imagem Sujeito Pizza" />
             </TitleStyled>
             <TitleStyled>Crie sua conta</TitleStyled>
-            <Form onFinish={(e) => console.log(e)} layout="horizontal">
+            <Form onFinish={(e) => register.mutate(e)} layout="vertical">
               <Item
+                label={<Label>Nome</Label>}
+                name={"name"}
+                rules={[{ required: true, message: "Campo obrigatório" }]}
+              >
+                <InputStyled />
+              </Item>
+              <Item
+                label={<Label>Email</Label>}
                 name={"email"}
                 rules={[{ required: true, message: "Campo obrigatório" }]}
               >
                 <InputStyled />
               </Item>
               <Item
+                label={<Label>Senha</Label>}
                 name={"password"}
                 rules={[{ required: true, message: "Campo obrigatório" }]}
               >
                 <InputPwd />
               </Item>
-              <BtnWithLoading loading={true} type="submit">
+              <BtnWithLoading loading={register.isPending} type="submit">
                 Enviar
               </BtnWithLoading>
             </Form>
