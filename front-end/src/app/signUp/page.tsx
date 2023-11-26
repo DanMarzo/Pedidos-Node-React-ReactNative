@@ -12,6 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { apiClient } from "@/infrastructure/apiClient";
 import { useRouter } from "next/navigation";
 import { Label } from "@/components/Typograph";
+import { toast } from "react-toastify";
 const { Item } = Form;
 
 export default function Home() {
@@ -19,7 +20,11 @@ export default function Home() {
   const register = useMutation({
     mutationFn: (body) => apiClient.post("/users", body),
     onSuccess() {
+      toast.success("Cadastro feito com sucesso");
       router.push("/login");
+    },
+    onError(error) {
+      toast.error(`Erro: ${error}`);
     },
   });
   return (

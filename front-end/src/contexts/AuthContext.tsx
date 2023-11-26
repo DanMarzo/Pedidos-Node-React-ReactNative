@@ -5,6 +5,7 @@ import { createContext, ReactNode, useState } from "react";
 import Router from "next/router";
 import { apiClient } from "@/infrastructure/apiClient";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 type AuthContextData = {
   user: UserProps;
@@ -50,6 +51,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const loginMutation = useMutation({
     mutationFn: (body: SignInProps) => apiClient.post("/session", body),
     onError(error) {
+      toast.error(`Erro: ${error}`);
+
       console.log(error);
     },
     onSuccess(data) {
@@ -59,6 +62,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
       setUser({ email, id, name });
       apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+      toast.success("Seja bem vindo");
+
       router.push("/dashboard");
     },
   });
