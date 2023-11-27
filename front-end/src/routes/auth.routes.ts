@@ -2,7 +2,7 @@
 import { RouteObject } from "react-router-dom";
 import { authWebRoutes } from "./webRoutes";
 
-const Routes:RouteObject[] = [
+const authRoutes: RouteObject[] = [
     {
         path: authWebRoutes.login,
         async lazy() {
@@ -12,4 +12,4 @@ const Routes:RouteObject[] = [
     },
 ]
 
-export default Routes
+export default authRoutes
