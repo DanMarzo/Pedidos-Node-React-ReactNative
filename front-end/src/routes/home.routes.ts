@@ -2,7 +2,7 @@ import { RouteObject } from "react-router-dom";
 
 const homeRoutes: RouteObject[] = [
     {
-        path: "/",
+        path: "/home",
         async lazy() {
             const HomePage = await import("../features/home/");
                 return { Component: HomePage.default };
