@@ -1,5 +1,8 @@
 const authWebRoutes = {
-    login: "/login"
+    auth: "/auth",
+    login: "logIn",
+    signUp: "signUp"
+
 }
 
 export{authWebRoutes}

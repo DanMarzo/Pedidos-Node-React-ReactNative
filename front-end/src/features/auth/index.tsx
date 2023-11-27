@@ -1,5 +1,12 @@
-const AuthPage = () => {
-  return <div>aaa</div>;
+import { Outlet } from "react-router-dom";
+import { Background } from "../../shared/components/background";
+
+const LayoutAuth = () => {
+  return (
+    <Background>
+      <Outlet />
+    </Background>
+  );
 };
 
-export default AuthPage;
+export default LayoutAuth;
