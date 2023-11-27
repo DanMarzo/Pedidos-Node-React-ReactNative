@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { Background } from "../../shared/components/background";
+import { BackgroundCentered } from "./auth.styled";
 
 const LayoutAuth = () => {
   return (
-    <Background>
+    <BackgroundCentered>
       <Outlet />
-    </Background>
+    </BackgroundCentered>
   );
 };
 
