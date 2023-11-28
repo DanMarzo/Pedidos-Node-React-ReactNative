@@ -4,6 +4,7 @@ const Label = styled.label`
 color: ${props => props.theme.colors.secondary};
 `
 const TitleStyled = styled.h1`
+    font-family: sans-serif;
     color: ${props => props.theme.colors.primary};
     text-align: center;
 `
