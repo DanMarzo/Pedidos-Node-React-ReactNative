@@ -14,6 +14,7 @@ import { UserProps } from "../auth.schema";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { useDispatch } from "react-redux";
 import { authAction } from "../auth.state";
+import { useEffect } from "react";
 const { Item } = Form;
 
 const LoginPage = () => {
@@ -22,8 +23,6 @@ const LoginPage = () => {
   const logIn = useMutation({
     mutationFn: (body: UserProps) => LoginService(body),
     onSuccess(data) {
-      console.log(data);
-
       dispatch(authAction.setUserProps(data));
       toast.success("Bem vindo");
       navigate("/home");
@@ -34,8 +33,6 @@ const LoginPage = () => {
   });
 
   const handleChange = (e: CheckboxChangeEvent) => {
-    console.log(e);
-
     if (e.target.checked) {
       sessionStorage.clear();
       localStorage.setItem("lembre", "S");
@@ -43,6 +40,10 @@ const LoginPage = () => {
       localStorage.clear();
     }
   };
+  useEffect(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+  }, []);
 
   return (
     <Centered>
