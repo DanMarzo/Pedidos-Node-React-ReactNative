@@ -1,5 +1,5 @@
 import { Checkbox, Form } from "antd";
-import { TitleStyled } from "../../../shared/components/Typograph";
+import { Label, TitleStyled } from "../../../shared/components/Typograph";
 import Logo from "../../../../public/logo.svg";
 import { InputStyled, InputPwd } from "../../../shared/components/Inputs";
 import { authWebRoutes } from "../../../routes/webRoutes";
@@ -63,7 +63,10 @@ const LoginPage = () => {
         >
           <InputPwd />
         </Item>
-        <Checkbox onChange={handleChange}>Lembre-se de mim</Checkbox>;
+        <Checkbox onChange={handleChange}>
+          <Label>Lembre-se de mim</Label>
+        </Checkbox>
+        ;
         <BtnWithLoading loading={false} type="submit">
           Enviar
         </BtnWithLoading>
