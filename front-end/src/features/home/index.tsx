@@ -1,7 +1,5 @@
-import { Background } from "../../shared/components/background";
-
 const HomePage = () => {
-  return <Background>Home</Background>;
+  return <>Home</>;
 };
 
 export default HomePage;
