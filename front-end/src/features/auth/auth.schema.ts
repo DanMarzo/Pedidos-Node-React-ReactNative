@@ -20,4 +20,4 @@ const initialStateAuth: StateAuth = {
     userProps: undefined
 }
 export default initialStateAuth
-export type {UserProps,UserPropsResponse}
+export type {UserProps,UserPropsResponse,StateAuth}
