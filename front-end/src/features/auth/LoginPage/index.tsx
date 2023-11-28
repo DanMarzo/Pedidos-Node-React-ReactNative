@@ -1,4 +1,4 @@
-import { Form } from "antd";
+import { Checkbox, Form } from "antd";
 import { TitleStyled } from "../../../shared/components/Typograph";
 import Logo from "../../../../public/logo.svg";
 import { InputStyled, InputPwd } from "../../../shared/components/Inputs";
@@ -8,17 +8,23 @@ import { Centered } from "../auth.styled";
 import { LinkStyled } from "../../../shared/components/Buttons/Links";
 import { useMutation } from "@tanstack/react-query";
 import { LoginService } from "./Login.api";
-import { UserProps } from "./Login.schemas";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { UserProps } from "../auth.schema";
+import { CheckboxChangeEvent } from "antd/es/checkbox";
+import { useDispatch } from "react-redux";
+import { authAction } from "../auth.state";
 const { Item } = Form;
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const logIn = useMutation({
     mutationFn: (body: UserProps) => LoginService(body),
     onSuccess(data) {
       console.log(data);
+
+      dispatch(authAction.setUserProps(data));
       toast.success("Bem vindo");
       navigate("/home");
     },
@@ -26,6 +32,18 @@ const LoginPage = () => {
       toast.error(error.message);
     },
   });
+
+  const handleChange = (e: CheckboxChangeEvent) => {
+    console.log(e);
+
+    if (e.target.checked) {
+      sessionStorage.clear();
+      localStorage.setItem("lembre", "S");
+    } else {
+      localStorage.clear();
+    }
+  };
+
   return (
     <Centered>
       <TitleStyled>
@@ -44,6 +62,7 @@ const LoginPage = () => {
         >
           <InputPwd />
         </Item>
+        <Checkbox onChange={handleChange}>Lembre-se de mim</Checkbox>;
         <BtnWithLoading loading={false} type="submit">
           Enviar
         </BtnWithLoading>
