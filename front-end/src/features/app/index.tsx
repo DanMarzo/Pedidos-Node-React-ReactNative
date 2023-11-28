@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import routesWeb from "../../routes/routes";
+import routesWeb from "../../routes/routes.tsx";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ThemeProvider } from "styled-components";
 import light from "../../shared/styles/theme/light";
