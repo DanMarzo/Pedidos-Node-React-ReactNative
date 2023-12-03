@@ -12,6 +12,7 @@ import Logo from "../../../public/logo.svg";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { userProps } from "../auth/auth.selector";
+import { categoryWebRoutes } from "../../routes/webRoutes";
 const LayoutApp: React.FC = () => {
   const user = useSelector(userProps);
   const signOut = () => {
@@ -27,7 +28,7 @@ const LayoutApp: React.FC = () => {
         </LinkImage>
         <h2>{user?.name}</h2>
         <Nav>
-          <LinkStyled to={"/categorias"}>Categorias</LinkStyled>
+          <LinkStyled to={categoryWebRoutes.categorias}>Categorias</LinkStyled>
           <LinkStyled to={"/cardapio"}>Cardápio</LinkStyled>
           <ButtonLogout onClick={signOut}>
             <LogoutOutlined />

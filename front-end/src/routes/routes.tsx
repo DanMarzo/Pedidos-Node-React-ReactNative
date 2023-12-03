@@ -5,6 +5,7 @@ import Redirect from "../features/layout/Redirect";
 import LayoutApp from "../features/layout";
 import ValidateToken from "../features/layout/ValidateToken";
 import NotFound from "../shared/components/NotFound/NotFound";
+import categoryRoutes from "./category.routes";
 
 const routesWeb = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const routesWeb = createBrowserRouter([
         <LayoutApp />
       </ValidateToken>
     ),
-    children: [...homeRoutes],
+    children: [...homeRoutes, ...categoryRoutes],
   },
   ...authRoutes,
 ]);

@@ -6,4 +6,7 @@ const authWebRoutes = {
 const homeWebRoutes = {
     home: "/home",
 }
-export{authWebRoutes,homeWebRoutes}
+const categoryWebRoutes = {
+    categorias: "/categorias"
+}
+export{authWebRoutes,homeWebRoutes,categoryWebRoutes}
