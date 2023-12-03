@@ -3,10 +3,16 @@ const authWebRoutes = {
     login: "logIn",
     signUp: "signUp"
 }
+
 const homeWebRoutes = {
     home: "/home",
 }
+
 const categoryWebRoutes = {
     categorias: "/categorias"
 }
-export{authWebRoutes,homeWebRoutes,categoryWebRoutes}
+
+const productWebRoutes = {
+    products: "/products"
+}
+export{authWebRoutes,homeWebRoutes,categoryWebRoutes,productWebRoutes}
