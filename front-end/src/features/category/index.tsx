@@ -1,5 +1,5 @@
 import { Form } from "antd";
-import { MainCategory } from "./category.styled";
+import { Main } from "../../shared/Main";
 import { InputStyled } from "../../shared/components/Inputs";
 import { Label, TitleStyled } from "../../shared/components/Typograph";
 import { toast } from "react-toastify";
@@ -21,7 +21,7 @@ const Category = () => {
   });
 
   return (
-    <MainCategory>
+    <Main>
       <Form layout="vertical" onFinish={includeCategory.mutate}>
         <TitleStyled>Cadastrar categorias</TitleStyled>
         <Item
@@ -36,7 +36,7 @@ const Category = () => {
           Cadastrar
         </BtnWithLoadingSubmit>
       </Form>
-    </MainCategory>
+    </Main>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MainCategory = styled.main`
+const Main = styled.main`
     background-color: ${x => x.theme.colors.dark700};
     margin: 4rem auto;
     max-width: 720px;
@@ -11,4 +11,4 @@ const MainCategory = styled.main`
     border-radius: 10px;
 `;
 
-export {MainCategory}
+export {Main}
