@@ -9,12 +9,6 @@ const LayoutApp: React.FC = () => {
         <img src={Logo} height={40} />
       </HeaderStyled>
       <ContentStyled>
-        {/* <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb> */}
-
         <Outlet />
       </ContentStyled>
     </Layout>
