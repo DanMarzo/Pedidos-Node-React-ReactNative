@@ -15,4 +15,19 @@ const BtnLogin = styled.button`
     }
     
 `
-export{BtnLogin}
+const BtnSubmit = styled.button`
+    background-color: ${props => props.theme.colors.green900};
+    color: ${props => props.theme.colors.dark700};
+    width: 100%;
+    border-radius: .5rem;
+    height: 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 1px solid ${props => props.theme.colors.dark700};
+    &:hover{
+        cursor: pointer;
+        border: 1px solid ${props => props.theme.colors.primary};
+    }
+    
+`
+export{BtnLogin,BtnSubmit}
