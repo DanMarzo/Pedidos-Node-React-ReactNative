@@ -1,4 +1,5 @@
-import { Layout } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
+import { Button, Layout } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -21,6 +22,7 @@ const HeaderStyled = styled(Header)`
 const LinkStyled = styled(Link)`
     color: ${x => x.theme.colors.primary};
     transition: .7s;
+    font-size: medium;
     &:hover{
         color: ${x => x.theme.colors.red900};
     }
@@ -31,7 +33,20 @@ const LinkImage = styled(Link)`
 `;
 const Nav = styled.nav`
     display:flex;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
 `
 
-export { ContentStyled, HeaderStyled,LinkStyled,LinkImage,Nav }
+
+const ButtonLogout = styled.button`
+    color: ${x => x.theme.colors.primary};
+    background-color: transparent;
+    border: none;
+    margin-right: .5rem;   
+    transition: .7s;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.2);
+    }
+`
+export { ContentStyled, HeaderStyled, LinkStyled, LinkImage, Nav, ButtonLogout }

@@ -1,6 +1,7 @@
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import { Link, Outlet } from "react-router-dom";
 import {
+  ButtonLogout,
   ContentStyled,
   HeaderStyled,
   LinkImage,
@@ -8,6 +9,7 @@ import {
   Nav,
 } from "./layout.styled";
 import Logo from "../../../public/logo.svg";
+import { LogoutOutlined } from "@ant-design/icons";
 const LayoutApp: React.FC = () => {
   return (
     <Layout>
@@ -18,7 +20,9 @@ const LayoutApp: React.FC = () => {
         <Nav>
           <LinkStyled to={"/categorias"}>Categorias</LinkStyled>
           <LinkStyled to={"/cardapio"}>Cardápio</LinkStyled>
-          <LinkStyled to={"/cardapio"}>Cardápio</LinkStyled>
+          <ButtonLogout>
+            <LogoutOutlined />
+          </ButtonLogout>
         </Nav>
       </HeaderStyled>
       <ContentStyled>
