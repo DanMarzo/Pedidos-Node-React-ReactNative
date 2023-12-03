@@ -1,5 +1,4 @@
-import { LogoutOutlined } from "@ant-design/icons";
-import { Button, Layout } from "antd";
+import { Layout } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
