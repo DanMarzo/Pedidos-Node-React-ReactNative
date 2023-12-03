@@ -1,12 +1,25 @@
 import { Layout } from "antd";
-import { Outlet } from "react-router-dom";
-import { ContentStyled, HeaderStyled } from "./layout.styled";
+import { Link, Outlet } from "react-router-dom";
+import {
+  ContentStyled,
+  HeaderStyled,
+  LinkImage,
+  LinkStyled,
+  Nav,
+} from "./layout.styled";
 import Logo from "../../../public/logo.svg";
 const LayoutApp: React.FC = () => {
   return (
     <Layout>
       <HeaderStyled>
-        <img src={Logo} height={40} />
+        <LinkImage to={"/home"}>
+          <img src={Logo} height={40} />
+        </LinkImage>
+        <Nav>
+          <LinkStyled to={"/categorias"}>Categorias</LinkStyled>
+          <LinkStyled to={"/cardapio"}>Cardápio</LinkStyled>
+          <LinkStyled to={"/cardapio"}>Cardápio</LinkStyled>
+        </Nav>
       </HeaderStyled>
       <ContentStyled>
         <Outlet />
