@@ -8,10 +8,11 @@ import initRedux from "./init-redux";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+import { injectStore } from "./infra/axios";
 
 const store = initRedux();
 const persistor = persistStore(store);
-
+injectStore(store);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <PersistGate persistor={persistor}>
