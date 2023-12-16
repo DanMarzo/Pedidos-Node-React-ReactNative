@@ -1,5 +1,5 @@
 import { httpToken } from "../../infra/axios";
-import { CreateCategory } from "./category.schemas";
+import { Category, CreateCategory } from "./category.schemas";
 
 const createCategoryService = async (body: CreateCategory): Promise<boolean> => {
     try {
@@ -12,10 +12,23 @@ const createCategoryService = async (body: CreateCategory): Promise<boolean> => 
         }
     } catch (error) {
         console.log(error);
-        
+
         throw new Error("Erro desconhecido");
 
     }
 }
 
-export {createCategoryService}
+const listCategoryService = async (): Promise<Category[]> => {
+    try {
+        const response = await httpToken.get("category",);
+        if (response.data) {
+            return response.data
+        }
+        else {
+            throw new Error();
+        }
+    } catch (error) {
+        throw new Error("Erro desconhecido");
+    }
+}
+export { createCategoryService, listCategoryService }

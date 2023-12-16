@@ -1,4 +1,9 @@
-interface CreateCategory{
+interface CreateCategory {
     name: string
 }
-export type {CreateCategory}
+interface Category {
+    id: string,
+    name: string
+}
+
+export type { CreateCategory,Category }

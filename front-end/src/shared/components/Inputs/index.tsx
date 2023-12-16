@@ -48,4 +48,17 @@ const InputStyled: React.FC<InputProps> = ({ ...rest }) => {
   return <Input {...rest} style={estilos} styles={{ input: estilos }} />;
 };
 
-export { InputPwd, InputStyled };
+const TextAreaStyled: React.FC = () => {
+  const theme = useContext(ThemeContext);
+
+  const estilos: React.CSSProperties = {
+    backgroundColor: theme?.colors.dark900,
+    color: theme?.colors.primary,
+    border: `1px solid ${theme?.colors.dark900}`,
+    resize: "none",
+    height: 100,
+  };
+  return <Input.TextArea style={estilos} styles={{ textarea: estilos }} />;
+};
+
+export { InputPwd, InputStyled, TextAreaStyled };
