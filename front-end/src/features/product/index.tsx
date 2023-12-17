@@ -1,20 +1,19 @@
-import { Form, Modal, Spin, Typography, Upload, UploadFile } from "antd";
+import { Form, Modal, Spin, Upload, UploadFile } from "antd";
 import { Main } from "../../shared/Main";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { listCategoryService } from "../category/category.service";
-import { OptionTypeSelect } from "../../shared/Models/select";
 import { OptionStd, SelectStd } from "./product.styled";
 import { BtnSubmit } from "../../shared/components/Buttons/buton.styled";
 import { InputStyled, TextAreaStyled } from "../../shared/components/Inputs";
-import { Label } from "../../shared/components/Typograph";
+import { Label, TitleStyled } from "../../shared/components/Typograph";
 import { RcFile } from "antd/es/upload";
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { createProductService } from "./product.services";
 import { toast } from "react-toastify";
+import { campoObrigatorio } from "../../shared/Rules";
 
 const { Item } = Form;
-const { Title } = Typography;
 const Products = () => {
   const getCategory = useQuery({
     queryKey: ["getCategory"],
@@ -45,24 +44,29 @@ const Products = () => {
   const createProduct = useMutation({
     mutationFn: (body: any) => createProductService(body),
     onSuccess() {
-      toast.success("CERTO");
+      toast.success("Produto criado com sucesso");
     },
     onError() {
-      toast.error("ERRO");
+      toast.error("Não foi possivel criar o produto");
     },
   });
 
   return (
     <Spin spinning={createProduct.isPending}>
       <Main>
-        <Title>Novo produto</Title>
+        <TitleStyled>Novo produto</TitleStyled>
         <Form layout="vertical" onFinish={(e) => createProduct.mutate(e)}>
-          <Item name="fileImage" getValueFromEvent={normFile}>
+          <Item
+            label={<Label>Imagem do produto</Label>}
+            rules={campoObrigatorio}
+            name="fileImage"
+            getValueFromEvent={normFile}
+          >
             <Upload
               accept="image/png, image/jpeg"
-              // beforeUpload={() => {
-              //   return false;
-              // }}
+              beforeUpload={() => {
+                return false;
+              }}
               maxCount={1}
               listType="picture-card"
               onPreview={handlePreview}
@@ -70,7 +74,11 @@ const Products = () => {
               <PlusOutlined style={{ color: "white" }} />
             </Upload>
           </Item>
-          <Item name="category_id" label={<Label>Categoria</Label>}>
+          <Item
+            rules={campoObrigatorio}
+            name="category_id"
+            label={<Label>Categoria</Label>}
+          >
             <SelectStd>
               {getCategory.data &&
                 getCategory.data.map((category) => (
@@ -80,16 +88,24 @@ const Products = () => {
                 ))}
             </SelectStd>
           </Item>
-          <Item name="name" label={<Label>Nome Produto</Label>}>
+          <Item
+            rules={campoObrigatorio}
+            name="name"
+            label={<Label>Nome Produto</Label>}
+          >
             <InputStyled />
           </Item>
-          <Item name="price" label={<Label>Preco</Label>}>
+          <Item
+            rules={campoObrigatorio}
+            name="price"
+            label={<Label>Preco</Label>}
+          >
             <InputStyled />
           </Item>
           <Item name="description" label={<Label>Descricao</Label>}>
             <TextAreaStyled />
           </Item>
-          <BtnSubmit />
+          <BtnSubmit>Criar produto</BtnSubmit>
         </Form>
         <Modal
           open={previewOpen}
@@ -103,6 +119,7 @@ const Products = () => {
     </Spin>
   );
 };
+
 const getBase64 = (file: RcFile): Promise<string> =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
