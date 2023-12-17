@@ -10,13 +10,13 @@ const TitleStyled = styled.h1`
     text-align: center;
 `
 
-const SubTitle = styled.h3`
+const SubTitle = styled.h2`
     font-family: sans-serif;
     color: ${props => props.theme.colors.primary};
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 `
 
 export { Label, TitleStyled, SubTitle }

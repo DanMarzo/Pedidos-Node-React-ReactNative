@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+
+const Article = styled.article`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`;
+
 const Section = styled.section`
     padding: 7px;
     background-color: ${x => x.theme.colors.dark900};
@@ -7,4 +14,4 @@ const Section = styled.section`
     border-left: 7px solid ${x => x.theme.colors.green900};
 `;
 
-export { Section }
+export { Section, Article }
