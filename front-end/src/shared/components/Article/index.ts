@@ -12,6 +12,7 @@ const Section = styled.section`
     background-color: ${x => x.theme.colors.dark900};
     border-radius: .3rem;
     border-left: 7px solid ${x => x.theme.colors.green900};
+    cursor: pointer;
 `;
 
 export { Section, Article }
