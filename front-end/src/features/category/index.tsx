@@ -1,5 +1,5 @@
 import { Form } from "antd";
-import { Main } from "../../shared/Main";
+import { Main } from "../../shared/components/Main";
 import { InputStyled } from "../../shared/components/Inputs";
 import { Label, TitleStyled } from "../../shared/components/Typograph";
 import { toast } from "react-toastify";

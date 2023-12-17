@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import styled from "styled-components";
 
 const Label = styled.label`
@@ -8,4 +9,14 @@ const TitleStyled = styled.h1`
     color: ${props => props.theme.colors.primary};
     text-align: center;
 `
-export{Label,TitleStyled}
+
+const SubTitle = styled.h3`
+    font-family: sans-serif;
+    color: ${props => props.theme.colors.primary};
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+`
+
+export { Label, TitleStyled, SubTitle }

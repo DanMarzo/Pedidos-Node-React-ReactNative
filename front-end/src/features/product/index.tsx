@@ -1,5 +1,5 @@
 import { Form, Modal, Spin, Upload, UploadFile } from "antd";
-import { Main } from "../../shared/Main";
+import { Main } from "../../shared/components/Main";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { listCategoryService } from "../category/category.service";
 import { OptionStd, SelectStd } from "./product.styled";

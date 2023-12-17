@@ -15,4 +15,8 @@ const categoryWebRoutes = {
 const productWebRoutes = {
     products: "/products"
 }
-export{authWebRoutes,homeWebRoutes,categoryWebRoutes,productWebRoutes}
+const dashboardWebRoutes = {
+    dashboard: "/dashboard"
+}
+
+export { authWebRoutes, homeWebRoutes, categoryWebRoutes, productWebRoutes, dashboardWebRoutes }
