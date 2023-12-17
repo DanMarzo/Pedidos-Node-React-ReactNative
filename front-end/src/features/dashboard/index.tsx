@@ -5,6 +5,7 @@ import { IconReloadOutlined } from "../../shared/components/Icons";
 import { useMutation } from "@tanstack/react-query";
 import { obterOrdersServices } from "./dashboard.service";
 import { useEffect } from "react";
+import { Section } from "../../shared/components/Article";
 
 const Dashboard = () => {
   const obterOrders = useMutation({ mutationFn: () => obterOrdersServices() });
@@ -19,11 +20,14 @@ const Dashboard = () => {
         Últimos pedidos{" "}
         <Tooltip title="Recarregar">
           <Button type="text" icon={<IconReloadOutlined />} />
-          <article>
-            <section></section>
-          </article>
         </Tooltip>
       </SubTitle>
+      <article>
+        {obterOrders.data &&
+          obterOrders.data.map((item) => (
+            <Section key={item.id}>Mesa: {item.table}</Section>
+          ))}
+      </article>
     </Main>
   );
 };
