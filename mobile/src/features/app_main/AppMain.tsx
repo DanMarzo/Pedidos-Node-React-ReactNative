@@ -1,15 +1,18 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
+import Routes from '../../routes';
 
 const AppMain = () => {
   return (
-    <SafeAreaView>
+    <NavigationContainer>
       <StatusBar
         backgroundColor="#1d1d2e"
         barStyle="light-content"
         translucent={false}
       />
-    </SafeAreaView>
+      <Routes />
+    </NavigationContainer>
   );
 };
 
