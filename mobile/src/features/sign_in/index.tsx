@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
+  ActivityIndicator,
   Image,
   StyleSheet,
   Text,
@@ -13,7 +14,7 @@ import { AuthContext } from '../../context/AuthContext';
 const SignIn = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const { signIn } = useContext(AuthContext);
+  const { signIn, isPending } = useContext(AuthContext);
   async function handleLogin() {
     if (email === '' || password === '') {
       Toast.exibirToast('Digite o email/senha');
@@ -38,9 +39,15 @@ const SignIn = () => {
           secureTextEntry={true}
           onChange={(text) => setPassword(text.nativeEvent.text)}
         />
-        <TouchableOpacity style={estilo.button} onPress={handleLogin}>
-          <Text style={estilo.buttonText}>Acessar</Text>
-        </TouchableOpacity>
+        <>
+          {isPending ? (
+            <ActivityIndicator />
+          ) : (
+            <TouchableOpacity style={estilo.button} onPress={handleLogin}>
+              <Text style={estilo.buttonText}>Acessar</Text>
+            </TouchableOpacity>
+          )}
+        </>
       </View>
     </View>
   );
