@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,15 +8,17 @@ import {
   View,
 } from 'react-native';
 import { Toast } from '../../shared/toast/toast';
+import { AuthContext } from '../../context/AuthContext';
 
 const SignIn = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
-  function handleLogin() {
-    if (email == '' || password == '') {
+  const { signIn } = useContext(AuthContext);
+  async function handleLogin() {
+    if (email === '' || password === '') {
       Toast.exibirToast('Digite o email/senha');
     } else {
+      await signIn({ email, password });
     }
   }
   return (
