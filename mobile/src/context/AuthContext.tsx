@@ -42,6 +42,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const signIn = async ({ email, password }: SignInProps) => {
     const response = await mutateAsync({ email, password });
+
     if (response.data) {
       setUser(response.data);
     }
